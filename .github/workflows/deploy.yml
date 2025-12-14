@@ -75,6 +75,7 @@ jobs:
         run: ${{ steps.detect-manager.outputs.runner }} next build
         env:
           BASE_PATH: /imposter
+          NEXT_PUBLIC_STATIC_EXPORT: "true"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
