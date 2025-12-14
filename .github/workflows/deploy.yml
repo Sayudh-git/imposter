@@ -73,6 +73,8 @@ jobs:
         run: ${{ steps.detect-manager.outputs.manager }} ${{ steps.detect-manager.outputs.command }}
       - name: Build with Next.js
         run: ${{ steps.detect-manager.outputs.runner }} next build
+        env:
+          BASE_PATH: /imposter
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

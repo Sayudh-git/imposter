@@ -5,10 +5,11 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true, // Required for static export
   },
-  // We assume the repo name is 'imposter' based on the git URL
-  // If the user renames the repo to 'kolkata-imposter', this needs to change to '/kolkata-imposter'
-  basePath: "/imposter",
-  assetPrefix: "/imposter",
+  // We use an environment variable for the base path to support both Vercel (root) and GitHub Pages (subpath)
+  // Vercel: BASE_PATH is undefined (or "") -> serves at root /
+  // GitHub Pages: BASE_PATH is set to "/imposter" in output -> serves at /imposter
+  basePath: process.env.BASE_PATH || "",
+  assetPrefix: process.env.BASE_PATH || "",
 };
 
 export default nextConfig;
